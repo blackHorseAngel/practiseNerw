@@ -1,6 +1,8 @@
 package Aigo.util;
 import Aigo.FindMiddleNode;
 import Aigo.POJO.ListNode;
+import Aigo.POJO.TreeNode;
+
 import java.util.*;
 
 /**
@@ -71,5 +73,15 @@ public class Init {
             node.nextNode = head;
             head = node;
         }
+    }
+    /***
+     *@Description TODO
+     *@Author zhangshenming
+     *@Param [n]
+     *@Date 2021/11/28 14:21
+     *@Return void
+     */
+    public static void initTreeNode(int n){
+        TreeNode rootNode = new TreeNode(n);
     }
 }

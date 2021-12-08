@@ -17,9 +17,17 @@ public class ReverseLinkList2 {
      *@Return Aigo.POJO.ListNode
      */
     public static ListNode reverseLinkList(ListNode head){
-        ListNode node = head;
-
-        return null;
+        ListNode node1 = head;
+        ListNode node2 = node1.nextNode;
+        ListNode tempNode = null;
+        node1.nextNode = null;
+        while (node2 != null){
+            tempNode = node2.nextNode;
+            node2.nextNode = node1;
+            node1 = node2;
+            node2= tempNode;
+        }
+        return node1;
     }
 
     public static void main(String[] args) {
