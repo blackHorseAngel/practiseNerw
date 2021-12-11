@@ -1,0 +1,17 @@
+
+m
+java:S3776"RRefactor this method to reduce its Cognitive Complexity from 26 to the 15 allowed.(ñĞñ­ıÿÿÿÿ
+Z
+java:S1854V"?Remove this useless assignment to local variable "greaterThan".(íš÷—şÿÿÿÿ
+C
+java:S1172T"-Remove this unused method parameter "target".(…‚º©
+C
+java:S1481U"-Remove this unused "lessThan" local variable.(Ùâô
+K
+java:S1481V"0Remove this unused "greaterThan" local variable.(íš÷—şÿÿÿÿ
+M
+java:S1854\"7Remove this useless assignment to local variable "arr".(Â—ã
+>
+java:S1481\"(Remove this unused "arr" local variable.(Â—ã
+S	java:S106^"9Replace this use of System.out or System.err by a logger.(´‹¹öşÿÿÿÿ
+t	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ºöğ¤üÿÿÿÿ

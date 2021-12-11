@@ -1,0 +1,11 @@
+
+V	java:S125"<This block of commented-out lines of code should be removed.(ãˆ‚ şÿÿÿÿ
+C	java:S108M")Either remove or fill this block of code.(å¢Äùÿÿÿÿ
+b
+java:S4143ô"FVerify this is the index that was intended; it was already set before.(œşÆ°ùÿÿÿÿ
+N	java:S106ğ"9Replace this use of System.out or System.err by a logger.(Š¶n
+I
+java:S1128".Remove this unused import 'java.util.HashMap'.(™˜”€ùÿÿÿÿ
+E
+java:S1128"*Remove this unused import 'java.util.Map'.(¼è½Òşÿÿÿÿ
+t	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ºöğ¤üÿÿÿÿ

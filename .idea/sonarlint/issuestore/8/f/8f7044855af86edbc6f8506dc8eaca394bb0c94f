@@ -1,0 +1,14 @@
+
+U
+java:S1118":Add a private constructor to hide the implicit public one.(¶‰Üııÿÿÿÿ
+4
+java:S2119"Save and re-use this "Random".(èõø—
+W
+java:S1854U"<Remove this useless assignment to local variable "rootNode".(³Ûù×üÿÿÿÿ
+G
+java:S1135N"2Complete the task associated to this TODO comment.(£°§\
+H
+java:S1481U"-Remove this unused "rootNode" local variable.(³Ûù×üÿÿÿÿ
+M
+java:S1128"0Remove this unused import 'Aigo.FindMiddleNode'.(ÈÉ•İ8²éÀ›Ø/
+o	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ø¢èì

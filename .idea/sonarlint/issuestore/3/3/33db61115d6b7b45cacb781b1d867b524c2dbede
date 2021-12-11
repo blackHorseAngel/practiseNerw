@@ -1,0 +1,18 @@
+
+?
+java:S11720"*Remove this unused method parameter "mid".(ˆ‰ô{
+T
+java:S18548"9Remove this useless assignment to local variable "array".(šÆËøÿÿÿÿ
+Q	java:S1255"<This block of commented-out lines of code should be removed.(ö¢İ
+E
+java:S14818"*Remove this unused "array" local variable.(šÆËøÿÿÿÿ
+V	java:S1259"<This block of commented-out lines of code should be removed.(ß¤Œ¿úÿÿÿÿ
+H
+java:S1128"-Remove this unused import 'java.util.Arrays'.(î–˜Éüÿÿÿÿ
+P
+java:S1128"5Remove this unused import 'Aigo.util.Init.initArray'.(õ±Ä§úÿÿÿÿ
+R
+java:S1128"7Remove this unused import 'Aigo.util.Print.printArray'.(ÃÈ¦ªüÿÿÿÿ
+t	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ºöğ¤üÿÿÿÿ
+Z
+java:S2583!"DChange this condition so that it does not always evaluate to "false"(ÎË´§

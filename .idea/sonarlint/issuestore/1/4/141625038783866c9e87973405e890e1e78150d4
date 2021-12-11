@@ -1,0 +1,12 @@
+
+A
+java:S1172&"+Remove this unused method parameter "next".(ÒÂ‡õ
+J
+java:S1656("/Remove or correct this useless self-assignment.(Ä›²èşÿÿÿÿ
+e
+java:S1104"OMake val a static final constant or non-public and provide accessors if needed.(Ô¸úÏ
+o
+java:S1104"TMake nextNode a static final constant or non-public and provide accessors if needed.(Õ¶‹Âùÿÿÿÿ
+t	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(É…¾øÿÿÿÿ
+
+java:S4165("fRemove this useless assignment; "nextNode" already holds the assigned value along all execution paths.(Ä›²èşÿÿÿÿ

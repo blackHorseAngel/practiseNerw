@@ -1,0 +1,18 @@
+
+f
+java:S11495"PReplace the synchronized class "Stack" by an unsynchronized one such as "Deque".(Êí‹Û
+@
+java:S1481"*Remove this unused "count" local variable.(æÕ¿¼
+R
+java:S1854P"<Remove this useless assignment to local variable "slowNode".(ÉÀôë
+C
+java:S1481P"-Remove this unused "slowNode" local variable.(ÉÀôë
+>	java:S108Q")Either remove or fill this block of code.(ŸÐ–Æ
+V	java:S125\"<This block of commented-out lines of code should be removed.(˜Äãáûÿÿÿÿ
+N	java:S106c"9Replace this use of System.out or System.err by a logger.( ðœú
+N	java:S106e"9Replace this use of System.out or System.err by a logger.(ŠŠÛä
+t
+java:S2293"YReplace the type specification in this constructor call with the diamond operator ("<>").(½áØÔùÿÿÿÿ
+o
+java:S22935"YReplace the type specification in this constructor call with the diamond operator ("<>").(Êí‹Û
+t	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ºöð¤üÿÿÿÿ
