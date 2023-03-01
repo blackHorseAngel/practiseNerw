@@ -1,6 +1,5 @@
 package Aigo.util;
 
-import Aigo.FindMiddleNode;
 import Aigo.POJO.ListNode;
 
 /**
@@ -42,6 +41,21 @@ public class Print {
                     System.out.print("  ");
                 }
 
+            }
+            System.out.println();
+        }
+    }
+    /**
+     * @decription 打印方阵二维数组
+     * @author zhangshenming
+     * @date 2021/12/22 17:43
+     * @param array
+     * @return void
+     */
+    public static void printDoubleArrayMew(int[][]array){
+        for(int x = 0 ; x < array.length ; x++){
+            for(int y = 0 ; y < array.length ; y++){
+                System.out.print(array[x][y] + "     ");
             }
             System.out.println();
         }

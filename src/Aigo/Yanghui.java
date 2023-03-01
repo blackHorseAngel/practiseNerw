@@ -34,8 +34,7 @@ public class Yanghui {
     }
 
     public static void main(String[] args) {
-        List<Integer>list = new ArrayList<Integer>();
-        list = getRow(5);
+        List<Integer>list = getRow(5);
         for(int i = 0;i<list.size();i++){
             System.out.print(list.get(i));
             System.out.print(" ");

@@ -1,9 +1,8 @@
 package Aigo.util;
-import Aigo.FindMiddleNode;
 import Aigo.POJO.ListNode;
 import Aigo.POJO.TreeNode;
 
-import java.util.*;
+import java.util.Random;
 
 /**
  *@Desprition 初始化一切（一维数组，二维数组，链表，）
@@ -45,6 +44,17 @@ public class Init {
         return arr;
     }
     /**
+     * @decription 初始化一个空的二维数组
+     * @author zhangshenming
+     * @date 2021/12/22 17:38
+     * @param length
+     * @return int[][]
+     */
+    public static int[][]initBlankMatrix(int length){
+        return new int[length][length];
+    }
+
+    /**
      *@Description 初始化链表--尾部插入
      *@Author zhangshenming
      *@Param n
@@ -74,6 +84,7 @@ public class Init {
             head = node;
         }
     }
+
     /***
      *@Description TODO
      *@Author zhangshenming

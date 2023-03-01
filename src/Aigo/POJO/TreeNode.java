@@ -48,10 +48,10 @@ public class TreeNode {
          *    3           8            4
          *  8 6 7      8  9  10     11 8 13
          *
-         *                                   8
-         *                   8               8            8
+         *                                    8
+         *                   8                8              8
          *         8         8      8    8    8    8    11   8    13
-         *    8    8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8
+         *
          */
 
         TreeNode rootNode = new TreeNode(8);
@@ -90,7 +90,7 @@ public class TreeNode {
 //        treeNode4.nextTreeNodes.add(treeNode14);
 //        treeNode4.nextTreeNodes.add(treeNode15);
 //        treeNode4.nextTreeNodes.add(treeNode16);
-//
+
 //        TreeNode treeNode17 = new TreeNode(8);
 //        TreeNode treeNode18 = new TreeNode(8);
 //        TreeNode treeNode19 = new TreeNode(8);
@@ -222,6 +222,86 @@ public class TreeNode {
             recycleTreeNode4(node, target, line, index);
         }
     }
+    /**
+     * @decription 前序遍历打印出找到target的时候的路径,不直接输出，使用list收集结果
+     * @author zhangshenming
+     * @date 2021/12/15 7:19
+     * @param treeNode, target, line, index]
+     * @return void
+     */
+    public static void recycleTreeNode4Plus(TreeNode treeNode,int target,int line ,int index,List<Result>resultList) {
+        line++;
+        if(treeNode.value == target){
+            Result result = new Result(treeNode,line);
+            int[]positionArray = result.positionArray;
+            positionArray[positionArray.length-1] = index;
+            Result oldResult = new Result();
+            if(resultList.size() != 0){
+                oldResult = resultList.get(resultList.size()-1);
+            }
+            int[]oldPositionArray = oldResult.positionArray;
+            for(int i = positionArray.length - 2; i >= 0;i--){
+                if(oldPositionArray.length >= i){
+                    positionArray[i] = oldPositionArray[i];
+                }else{
+                    positionArray[i] = 0;
+                }
+            }
+            result.treeNode = treeNode;
+            result.line = line;
+            resultList.add(result);
+        }
+            for (int i = 0; i < treeNode.nextTreeNodes.size(); i++) {
+                TreeNode node = treeNode.nextTreeNodes.get(i);
+                index = i;
+                recycleTreeNode4Plus(node, target, line, index, resultList);
+            }
+        }
+        /**
+         * @decription 后序遍历打印出找到target的时候的路径,不直接输出，使用list收集结果
+         * @author zhangshenming
+         * @date 2021/12/15 19:54
+         * @param treeNode, target, line, index, resultList]
+         * @return void
+         */
+        public static void recycleTreeNode4PlusNew(TreeNode treeNode,int target,int line,int index,List<Result>resultList){
+            line++;
+            for (int i = 0; i < treeNode.nextTreeNodes.size(); i++) {
+                TreeNode node = treeNode.nextTreeNodes.get(i);
+                index = i;
+                recycleTreeNode4PlusNew(node, target, line, index, resultList);
+                if(node.value == target){
+                    Result result = new Result(node,line+1);
+                    int[]positionArray = result.positionArray;
+                    positionArray[positionArray.length-1] = index;
+                    Result oldResult = new Result();
+                    if(resultList.size() != 0){
+                        oldResult = resultList.get(resultList.size()-1);
+                    }
+                    int[]oldPositionArray = oldResult.positionArray;
+                    if(positionArray.length == oldPositionArray.length){
+                        for(int j = positionArray.length - 2; j >= 0;j--){
+                            if(oldPositionArray.length > j){
+                                positionArray[j] = oldPositionArray[j];
+                            }else{
+                                positionArray[j] = 0;
+                            }
+                        }
+                    }else{
+                        if(positionArray.length != 1 && resultList.size() != 0 && positionArray.length >= 3){
+                            positionArray[positionArray.length - 2] = oldPositionArray[oldPositionArray.length - 1] + 1;
+                        }
+                    }
+                    result.treeNode = treeNode;
+                    result.line = line+1;
+                    resultList.add(result);
+                }
+            }
+            if(line == 1 && treeNode.value == target){
+                Result result = new Result(treeNode,1);
+                resultList.add(result);
+            }
+        }
 
     /**
      * @param treeNode, target, line,arr(用来存储下标index和个数count),end
@@ -247,7 +327,31 @@ public class TreeNode {
             recycleTreeNode5(node, target,line, index,count,end);
         }
     }
-
+    /**
+     * @decription 打印找到符合条件的节点的位置
+     * @author zhangshenming
+     * @date 2021/12/15 8:55
+     * @param resultList
+     * @return void
+     */
+    public static void printTreeNodePosition(List<Result>resultList,int target){
+        for(Result result: resultList){
+            int[]positionArray = result.positionArray;
+            StringBuilder builder = new StringBuilder();
+            builder.append("找到等于");
+            builder.append(target);
+            builder.append("的节点是");
+            builder.append(result.treeNode);
+            builder.append(",它的位置是：");
+            for(int i:positionArray){
+                builder.append(i);
+                builder.append("-");
+            }
+            String str = builder.toString();
+            str = str.substring(0,str.length()-1);
+            System.out.println(str);
+        }
+    }
     public static void main(String[] args) {
         TreeNode rootNode = initTree();
 //        recycleTreeNode2(rootNode);
@@ -256,6 +360,15 @@ public class TreeNode {
 //        recycleTreeNode3(rootNode,8,nodeSet);
 
 //        recycleTreeNode4(rootNode,8,0,0);
-        recycleTreeNode5(rootNode,8,0,0,0,10);
+
+//            List<Result>resultList = new ArrayList<Result>();
+//            recycleTreeNode4Plus(rootNode,8,0,0,resultList);
+//            printTreeNodePosition(resultList,8);
+
+        List<Result>resultListNew = new ArrayList<Result>();
+        recycleTreeNode4PlusNew(rootNode,8,0,0,resultListNew);
+        printTreeNodePosition(resultListNew,8);
+
+//        recycleTreeNode5(rootNode,8,0,0,0,10);
     }
 }

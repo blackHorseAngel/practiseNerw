@@ -7,6 +7,14 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" exported="" scope="PROVIDED" name="traverse" level="project" />
+    <orderEntry type="module-library" exported="">
+      <library name="traverse">
+        <CLASSES />
+        <JAVADOC />
+        <SOURCES>
+          <root url="jar://E:/traverse.jar!/" />
+        </SOURCES>
+      </library>
+    </orderEntry>
   </component>
 </module>

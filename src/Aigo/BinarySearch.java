@@ -32,12 +32,44 @@ public class BinarySearch {
         }
         return -1;
     }
+    public static int binarySearch(int[]nums,int target){
+        int left = 0;
+        int right = nums.length-1;
+        int middle = 0;
+        while(left <= right){
+            middle = (right - left)/2 + left;
+            int comparasion = comparator(nums,target,middle);
+            if(comparasion > 0){
+                right = middle -1;
+            }else if (comparasion < 0){
+                left = middle + 1;
+            }else{
+                return middle;
+            }
+        }
+       return -1;
+    }
+    public static int comparator(int[]nums,int target,int index){
+        if(index >= 0 && index < nums.length){
+            if(nums[index] > target){
+                return 1;
+            } else if (nums[index] < target) {
+                return -1;
+            }else{
+                return 0;
+            }
+        }
+        return -1;
+    }
     public static void main(String[] args) {
 //        int[]array = initArray(10);
 //        Arrays.sort(array);
 //        printArray(array);
-        int[]nums = {-1,0,3,5,9,12};
-        int a = search(nums,9);
+//        int[]nums = {-1,0,3,5,9,12};
+        int[]nums = {1};
+        int a = binarySearch(nums,1);
         System.out.println(a);
+
+
     }
 }

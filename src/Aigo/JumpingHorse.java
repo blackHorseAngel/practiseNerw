@@ -1,9 +1,12 @@
 package Aigo;
 
+import Aigo.POJO.Direction;
+import Aigo.POJO.Point;
 import Aigo.util.Init;
+import Aigo.util.Print;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *@Desprition 国际象棋中的马从棋盘上的任意一个格子出发，不重复的跳完整个棋盘并打印出每一步的步数
@@ -12,359 +15,159 @@ import java.util.Map;
  *@Version 1.0
  */
 public class JumpingHorse {
-    public static void jumpingHorse(int[][] array, int x, int y) {
-        //用来记录每次的坐标和方向:direction[0],x-step[1],y-step[2]
-        int[] step = new int[192];
-        //方向：
-        // 0:(x+1,y+2);
-        // 1:(x+2,y+1);
-        // 2:(x-1,y+2);
-        // 3:(x-2,y+1);
-        // 4:(x-1,y-2);
-        // 5:(x-2,y-1);
-        // 6:(x+1,y-2);
-        // 7:(x+2,y-1);
-        //存放函数间调用的参数值：0-方向；1-step数组中x对应的下标；2-step数组中y对应的下标；3-step数组中方向对应的下标；
-        //4-x对应的步；5-y对应的步；6-棋盘长度(固定值)
-        int[]storage = new int[7];
-        storage[0] = 0;
-        storage[1] = 1;
-        storage[2] = 2;
-        storage[3] = 3;
-        storage[4] = x;
-        storage[5] = y;
-        storage[6] = array.length;
-        while((step[191] == 0) || (step[190] == 0) || (step[189] == 0)){
-                switch (storage[0]%8){
-                    case 0:moveTo0(step,storage);
-                           break;
-                    case 1:moveTo1(step,storage);
-                           break;
-                    case 2:moveTo2(step,storage);
-                           break;
-                    case 3:moveTo3(step,storage);
-                           break;
-                    case 4:moveTo4(step,storage);
-                           break;
-                    case 5:moveTo5(step,storage);
-                           break;
-                    case 6:moveTo6(step,storage);
-                           break;
-                    case 7:moveTo7(step,storage);
-                           break;
-                    default:break;
+    /**
+     * @decription
+     * @author zhangshenming
+     * @date 2021/12/18 17:35
+     * @param matrix, point, flag, direction,pointList
+     * @return void
+     */
+    public static void jumpingHorse(int[][]matrix,Point point, boolean[][]flag,Direction[]direction,List<Point> pointList) {
+       /* //将初始点加入到结果集
+        pointList.add(point);
+        //将当前方向设置为true，表示走过了
+        flag[direction.getIndex()] = true;
+        //判断能否走下一步
+        boolean hasNext = tryNext(matrix,point,direction);
+        //如果可以走下一步，那么将下一步加入到结果集中；如果下一步出界了，那么更改下一步的方向，重新验证；
+        if(hasNext){
+            int newX = point.getX() + direction.getX();
+            int newY = point.getY() + direction.getY();
+            Point p = new Point (newX,newY);
+            if(!pointList.contains(p)){
+                pointList.add(p);
+            }
+            jumpingHorse(matrix,p,flag,direction,pointList);
+        }else{
+            int index = direction.getIndex();
+            Direction d = Direction.getDirection(index++);
+            jumpingHorse(matrix,point,flag,d,pointList);
+        }*/
+    }
+    /**
+     * @decription
+     * @author zhangshenming
+     * @date 2021/12/18 20:32
+     * @param length, point, flag, directions, pointList
+     * @return void
+     */
+    public static boolean jumpingHorse2(int length,Point point,boolean[][]flag,Direction direction,List<Point>pointList){
+        int size = length * length;
+        boolean sign = false;
+        if(pointList.size() != size) {
+            //遍历8个方向
+               for (int i = 0; i < direction.getRange(); i++) {
+                //方向的点坐标
+                Point directionPoint = direction.getDirections().get(i);
+                //尝试走下一步
+                boolean hasNext = tryNext(length, point, flag, directionPoint);
+                //若下一步能走，将当前的点坐标移至下一个位置，下一个位置的标记为true。继续这个过程
+                if (hasNext) {
+                    Point nextPoint = Point.moveTo(point, directionPoint);
+                    //查找到结果集，看是否有当前的点，若没有加进去
+                    addPoint(nextPoint, pointList, flag);
+                    sign = jumpingHorse2(length, nextPoint, flag, direction, pointList);
+                    //删除由于当前点及其下属点没有符合条件的点，但把当前点加入到结果集中的点
+                    deletePoint(pointList.get(pointList.size()-1),pointList,flag);
+                    return true;
                 }
+            }
+        }else{
+            if(sign){
+                printPointListNew(pointList,Init.initBlankMatrix(8));
+            }
         }
-
+        return false;
+    }
+    /**
+     * @decription 删除不符合条件的
+     * @author zhangshenming
+     * @date 2022/1/1 17:38
+     * @param point, pointList, flag
+     * @return void
+     */
+    private static void deletePoint(Point point,List<Point>pointList,boolean[][]flag) {
+        pointList.remove(point);
+        flag[point.getX()][point.getY()] = false;
     }
 
     /**
-     * @Description 移动到方向0后需要走的步
-     * @Author zhangshenming
-     * @Param step, length
-     * @Date 2021/11/23 23:54
-     * @Return int[]
+     * @decription 如果当前走到的点满足要求，那么将该点分别加入走过的点的结果集中和记录轨迹的结果集中
+     * @author zhangshenming
+     * @date 2022/1/1 16:52
+     * @param point, pointList, flag
+     * @return void
      */
-    public static void moveTo0(int[] step, int[]storage) {
-        int direction0 = storage[0];
-        int i = storage[1];
-        int j = storage[2];
-        int k = storage[3];
-        int x = storage[4];
-        int y = storage[5];
-        int length = storage[6];
-        while ((x + 1 <= length) && (y + 2 <= length)) {
-            if(step[i] != 0){
-
-            }
-                i += 3;
-                j += 3;
-                k += 3;
-            step[i] = x + 1;
-            step[j] = y + 2;
-            step[k] = direction0;
-
-        }
-        storage[0] = direction0 + 1;
-        storage[1] = i;
-        storage[2] = j;
-        storage[3] = k;
-        storage[4] = x;
-        storage[5] = y;
+    private static void  addPoint(Point point,List<Point>pointList,boolean[][]flag){
+        pointList.add(point);
+        flag[point.getX()][point.getY()] = true;
     }
 
     /**
-     * @Description 移动到方向1后需要走的步数
-     * @Author zhangshenming
-     * @Param step, length
-     * @Date 2021/11/23 23:52
-     * @Return int[]
+     * @decription 尝试着去走下一步
+     * @author zhangshenming
+     * @date 2021/12/18 17:45
+     * @param length, point,flag,directionPoint
+     * @return boolean
      */
-    public static void moveTo1(int[] step, int[]storage) {
-        int direction1 = storage[0];
-        int i = storage[1];
-        int j = storage[2];
-        int k = storage[3];
-        int x = storage[4];
-        int y = storage[5];
-        int length = storage[6];
-        while ((x + 2 <= length) && (y + 1 <= length)) {
-            if (i != 0) {
-                i += 3;
-                j += 3;
-                k += 3;
-            }
-            step[i] = x + 2;
-            step[j] = y + 1;
-            step[k] = direction1;
-            if (i == 0) {
-                i += 3;
-                j += 3;
-                k += 3;
-            }
+    private static boolean tryNext(int length, Point point,boolean[][]flag,Point directionPoint) {
+        //获取下一步的位置
+        Point nextPoint = Point.moveTo(point,directionPoint);
+        //判断下一步是否越界
+        if(nextPoint.getX() >= length || nextPoint.getX() < 0 || nextPoint.getY() >= length || nextPoint.getY() < 0){
+           return false;
         }
-        storage[0] = direction1 + 1;
-        storage[1] = i;
-        storage[2] = j;
-        storage[3] = k;
-        storage[4] = x;
-        storage[5] = y;
-    }
-
-    /**
-     * @Description 移动到方向2后需要走的步
-     * @Author zhangshenming
-     * @Param step, length
-     * @Date 2021/11/23 23:51
-     * @Return int[]
-     */
-    public static void moveTo2(int[] step, int[]storage) {
-        int direction2 = storage[0];
-        int i = storage[1];
-        int j = storage[2];
-        int k = storage[3];
-        int x = storage[4];
-        int y = storage[5];
-        int length = storage[6];
-        while ((x - 1 <= length) && (y + 2 <= length)) {
-            if (i != 0) {
-                i += 3;
-                j += 3;
-                k += 3;
-            }
-            step[i] = x - 1;
-            step[j] = y + 2;
-            step[k] = direction2;
-            if (i == 0) {
-                i += 3;
-                j += 3;
-                k += 3;
-            }
+        //判断下一步是否走过
+        if(flag[nextPoint.getX()][nextPoint.getY()]){
+           return false;
         }
-        storage[0] = direction2 + 1;
-        storage[1] = i;
-        storage[2] = j;
-        storage[3] = k;
-        storage[4] = x;
-        storage[5] = y;
-    }
-
-    /**
-     * @Description 移动到方向3后需要走的步
-     * @Author zhangshenming
-     * @Param step, length
-     * @Date 2021/11/23 23:49
-     * @Return int[]
-     */
-    public static void moveTo3(int[] step, int[]storage) {
-        int direction3 = storage[0];
-        int i = storage[1];
-        int j = storage[2];
-        int k = storage[3];
-        int x = storage[4];
-        int y = storage[5];
-        int length = storage[6];
-        while ((x - 2 <= length) && (y + 1 <= length)) {
-            if (i != 0) {
-                i += 3;
-                j += 3;
-                k += 3;
-            }
-            step[i] = x - 2;
-            step[j] = y + 1;
-            step[k] = direction3;
-            if (i == 0) {
-                i += 3;
-                j += 3;
-                k += 3;
-            }
-        }
-        storage[0] = direction3 + 1;
-        storage[1] = i;
-        storage[2] = j;
-        storage[3] = k;
-        storage[4] = x;
-        storage[5] = y;
-    }
-
-    /**
-     * @Description 移动到方向4后需要走的步
-     * @Author zhangshenming
-     * @Param step, length
-     * @Date 2021/11/23 23:47
-     * @Return int[]
-     */
-    public static void moveTo4(int[] step, int[]storage) {
-        int direction4 = storage[0];
-        int i = storage[1];
-        int j = storage[2];
-        int k = storage[3];
-        int x = storage[4];
-        int y = storage[5];
-        int length = storage[6];
-        while ((x - 1 <= length) && (y - 2 <= length)) {
-            if (i != 0) {
-                i += 3;
-                j += 3;
-                k += 3;
-            }
-            step[i] = x - 1;
-            step[j] = y - 2;
-            step[k] = direction4;
-            if (i == 0) {
-                i += 3;
-                j += 3;
-                k += 3;
-            }
-        }
-        storage[4] = direction4 + 1;
-        storage[1] = i;
-        storage[2] = j;
-        storage[3] = k;
-        storage[4] = x;
-        storage[5] = y;
-    }
-
-    /**
-     * @Description 移动到方向5后需要走的步
-     * @Author zhangshenming
-     * @Param step, length
-     * @Date 2021/11/23 23:46
-     * @Return int[]
-     */
-    public static void moveTo5(int[] step, int[]storage) {
-        int direction5 = storage[0];
-        int i = storage[1];
-        int j = storage[2];
-        int k = storage[3];
-        int x = storage[4];
-        int y = storage[5];
-        int length = storage[6];
-        while ((x - 2 <= length) && (y - 1 <= length)) {
-            if (i != 0) {
-                i += 3;
-                j += 3;
-                k += 3;
-            }
-            step[i] = x - 2;
-            step[j] = y - 1;
-            step[k] = direction5;
-            if (i == 0) {
-                i += 3;
-                j += 3;
-                k += 3;
-            }
-        }
-        storage[0] = direction5 + 1;
-        storage[1] = i;
-        storage[2] = j;
-        storage[3] = k;
-        storage[4] = x;
-        storage[5] = y;
-    }
-
-    /**
-     * @Description 移动到方向6后需要走的步
-     * @Author zhangshenming
-     * @Param step, length
-     * @Date 2021/11/23 23:45
-     * @Return int[]
-     */
-    public static void moveTo6(int[] step, int[]storage) {
-        int direction6 = storage[0];
-        int i = storage[1];
-        int j = storage[2];
-        int k = storage[3];
-        int x = storage[4];
-        int y = storage[5];
-        int length = storage[6];
-        while ((x + 1 <= length) && (y - 2 <= length)) {
-            if (i != 0) {
-                i += 3;
-                j += 3;
-                k += 3;
-            }
-            step[i] = x + 1;
-            step[j] = y - 2;
-            step[k] = direction6;
-            if (i == 0) {
-                i += 3;
-                j += 3;
-                k += 3;
-            }
-        }
-        storage[0] = direction6 + 1;
-        storage[1] = i;
-        storage[2] = j;
-        storage[3] = k;
-        storage[4] = x;
-        storage[5] = y;
-    }
-
-    /**
-     * @Description 移动到方向7的时候需要走的步数
-     * @Author zhangshenming
-     * @Param step, length
-     * @Date 2021/11/23 23:45
-     * @Return int[]
-     */
-    public static void moveTo7(int[] step, int[]storage) {
-        int direction7 = storage[0];
-        int i = storage[1];
-        int j = storage[2];
-        int k = storage[3];
-        int x = storage[4];
-        int y = storage[5];
-        int length = storage[6];
-        while ((x + 2 <= length) && (y - 1 <= length)) {
-            if (i != 0) {
-                i += 3;
-                j += 3;
-                k += 3;
-            }
-            step[i] = x + 2;
-            step[j] = y - 1;
-            step[k] = direction7;
-            if (i == 0) {
-                i += 3;
-                j += 3;
-                k += 3;
-            }
-        }
-        storage[0] = direction7 + 1;
-        storage[1] = i;
-        storage[2] = j;
-        storage[3] = k;
-        storage[4] = x;
-        storage[5] = y;
+        return true;
     }
 
     public static void main(String[] args) {
-      int[][]array = Init.initMatrix(8);
-      long startTime = System.currentTimeMillis();
-      jumpingHorse(array,0,0);
-      long endTime = System.currentTimeMillis();
-      long time = endTime - startTime;
-        System.out.println("马跳完整个国际象棋棋盘需要的时间是：" + time);
-       }
+        //初始点坐标
+        Point  originPoint = new Point(0,0);
+        //结果集
+        List<Point>pointList = new ArrayList<Point>();
+        //记录轨迹
+        boolean[][]flag = new boolean[8][8];
+        //将始发点轨迹放入轨迹记录中
+        flag[originPoint.getX()][originPoint.getY()] = true;
+        //将来初始点放入结果集
+        pointList.add(originPoint);
+        //初始化方向
+        Direction direction = Direction.InitDirection(8);
+        jumpingHorse2(8,originPoint,flag,direction,pointList);
     }
+    /**
+     * @decription 输出所有拿到的点的集合
+     * @author zhangshenming
+     * @date 2021/12/18 17:36
+     * @param pointList
+     * @return void
+     */
+    private static void printPointList(List<Point> pointList) {
+        for(int i = 0 ; i < pointList.size() ; i++){
+            if(i > 0 && i % 8 == 0){
+                System.out.println();
+            }
+            Point point = pointList.get(i);
+            System.out.print(point.toString()+" ");
+        }
+    }
+    /**
+     * @decription 将得到的结果点集给二维数组赋值，并打印该二维数组
+     * @author zhangshenming
+     * @date 2021/12/22 16:14
+     * @param pointList
+     * @return void
+     */
+    private  static void printPointListNew(List<Point>pointList,int[][]matrix){
+        for(int i =0 ; i < pointList.size() ; i++){
+            Point point = pointList.get(i);
+            matrix[point.getX()][point.getY()] = i;
+        }
+        Print.printDoubleArrayMew(matrix);
+    }
+
+}
