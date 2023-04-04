@@ -1,10 +1,10 @@
 package Aigo;
 
-import static Aigo.util.Init.initArray;
 import static Aigo.util.Print.printArray;
 
 /**
- *@Desprition 插入排序算法：每次取数组中的上一轮拍完序的元素的下一个作为本轮将要插入的元素，将该元素与排好序的元素做比较。
+ *@Desprition
+ * 插入排序算法：每次取数组中的上一轮拍完序的元素的下一个作为本轮将要插入的元素，将该元素与排好序的元素做比较。
  * 第一次排序的时候取第一个元素，因为没有比较，所以不需要排序，默认是第一个元素即可。
  *@author zhangshenming
  *@date 2021-8-18 9:20

@@ -41,11 +41,111 @@ package Aigo;
  * @Version 1.0.0
  */
 public class ValidSudoko {
-    public boolean isValidSudoku(char[][] board) {
+    /*class Sudoko {
+        String value;
+        Point[]rowPoint = new Point[9];
+        Point[]colPoint = new Point[9];
+        Point[]square = new Point[9];
+
+        public Sudoko() {
+        }
+
+        public Sudoko(String value, Point[] rowPoint, Point[] colPoint, Point[] square) {
+            this.value = value;
+            this.rowPoint = rowPoint;
+            this.colPoint = colPoint;
+            this.square = square;
+        }
+
+        public void setValue(String value) {
+            this.value = value;
+        }
+
+        public void setRowPoint(Point[] rowPoint) {
+            this.rowPoint = rowPoint;
+        }
+
+        public void setColPoint(Point[] colPoint) {
+            this.colPoint = colPoint;
+        }
+
+        public void setSquare(Point[] square) {
+            this.square = square;
+        }
+
+        public String getValue() {
+            return value;
+        }
+
+        public Point[] getRowPoint() {
+            return rowPoint;
+        }
+
+        public Point[] getColPoint() {
+            return colPoint;
+        }
+
+        public Point[] getSquare() {
+            return square;
+        }
+    }
+    class Point{
+        int x;
+        int y;
+
+        public Point() {
+        }
+
+        public int getX() {
+            return x;
+        }
+
+        public int getY() {
+            return y;
+        }
+
+        public void setX(int x) {
+            this.x = x;
+        }
+
+        public void setY(int y) {
+            this.y = y;
+        }
+
+        public Point(int x, int y) {
+            this.x = x;
+            this.y = y;
+        }
+    }*/
+
+    public boolean isValidSudoku(String[][] board) {
+        for(int i = 0 ; i < board.length ; i++){
+            for(int j = 0 ; j < board[0].length ; j++){
+
+            }
+        }
         return false;
     }
 
-    public static void main(String[] args) {
 
+    public static void main(String[] args) {
+//        String[][]board = new String[][]{
+//                {"5","3",".",".","7",".",".",".","."},
+//                {"6",".",".","1","9","5",".",".","."},
+//                {".","9","8",".",".",".",".","6","."},
+//                {"8",".",".",".","6",".",".",".","3"},
+//                {"4",".",".","8",".","3",".",".","1"},
+//                {"7",".",".",".","2",".",".",".","6"},
+//                {".","6",".",".",".",".","2","8","."},
+//                {".",".",".","4","1","9",".",".","5"},
+//                {".",".",".",".","8",".",".","7","9"}};
+//        boolean flag = isValidSudoku(board);
+//        System.out.println(flag);
+        String str1 = "243";
+        String str2 = "564";
+        int a = Integer.parseInt(String.valueOf(str1.charAt(0)));
+        System.out.println(a);
+        int b = str2.indexOf(0);
+        System.out.println(b);
     }
 }

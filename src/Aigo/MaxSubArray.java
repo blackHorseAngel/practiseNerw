@@ -21,6 +21,7 @@ package Aigo;
  * @Version 1.0.0
  */
 public class MaxSubArray {
+    //动态规划
     public static int maxSubArray(int[] nums) {
        int[]dp = new int[nums.length];
        dp[0] = nums[0];

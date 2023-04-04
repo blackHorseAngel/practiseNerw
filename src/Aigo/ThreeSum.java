@@ -1,7 +1,6 @@
 package Aigo;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 /**
  * @Description https://leetcode.cn/problems/3sum
@@ -32,6 +31,7 @@ public class ThreeSum {
     //数组遍历
     public static List<List<Integer>> threeSum(int[] nums) {
         List<List<Integer>>sumList = new ArrayList<>();
+        Set<List<Integer>> set = new HashSet<>();
         List<Integer>numList = null;
         int temp = 0;
         for(int i = 0 ; i < nums.length ; i++){
@@ -43,9 +43,15 @@ public class ThreeSum {
                         numList.add(nums[i]);
                         numList.add(nums[j]);
                         numList.add(nums[k]);
-                        sumList.add(numList);
+                        Collections.sort(numList);
+                        set.add(numList);
                     }
                 }
+            }
+        }
+        if(set.size() != 0){
+            for(List<Integer>list : set){
+                sumList.add(list);
             }
         }
         return sumList;

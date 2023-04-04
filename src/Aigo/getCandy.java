@@ -4,7 +4,8 @@ import java.util.HashSet;
 import java.util.Set;
 
 /**
- *@Desprition Alice有n枚糖,其中第i枚糖的类型为candyType[i].Alice注意到她的体重正在增长,所以前去拜访了一位医生。
+ *@Desprition
+ * Alice有n枚糖,其中第i枚糖的类型为candyType[i].Alice注意到她的体重正在增长,所以前去拜访了一位医生。
  * 医生建议Alice要少摄入糖分,只吃掉她所有糖的n/2即可(n是一个偶数).Alice非常喜欢这些糖,她想要在遵循医生建议的情况下,尽可能吃到最多不同种类的糖。
  * 给你一个长度为n的整数数组candyType返回:Alice在仅吃掉n/2枚糖的情况下,可以吃到糖的最多种类数。
  * 输入：candyType=[1,1,2,2,3,3]

@@ -13,4 +13,7 @@
   <component name="ProjectType">
     <option name="id" value="jpab" />
   </component>
+  <component name="UnicodeBrowser">
+    <option name="fontName" value="JetBrains Mono" />
+  </component>
 </project>
