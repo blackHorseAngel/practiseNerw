@@ -17,12 +17,8 @@ J
 src/Aigo/GuessNumber2.java,b\d\bd59949cc0bce49720780fc9f70aa26a124c89de
 J
 src/Aigo/HollandFlag2.java,a\c\ac4d6c8362224965c5b4f8817482aea8a93e6fcc
-Z
-*src/Aigo/SubsequenceOgGivenDifference.java,d\b\db4e534e3760700a238a78eae01b1f5cccb358af
 J
 src/Aigo/HollandFlag3.java,b\5\b54b6cbaa6e52233d079e4535b74549df090ec9d
-I
-src/Aigo/GuessNumber.java,3\f\3fdc1987ff1853915eca62047f979d4878da1153
 S
 #.idea/sonarlint/issuestore/index.pb,9\f\9fe84ebb15faf917b7def6236dba604453cc61e0
 U
@@ -85,19 +81,13 @@ H
 src/Aigo/Fibonacci2.java,b\f\bf50e906bd5ef2264d487fe6ec775a18a2fda129
 N
 src/Aigo/PrefaceTravelsal.java,8\8\88bd1116108f007cfb6df533bb74f1ee3e22943f
-J
-src/Aigo/TigerMachine.java,f\5\f5d83fc656e3256b0f6a1b5411e4c4ce0add602c
-N
-src/Aigo/RemoveDuplicates.java,5\7\57248481ca18643cffdd58b02e8642ddacda60bb
-P
- src/Aigo/LetterCombinations.java,3\4\34c5babded8171ede12abd0ce025fb2b594287b7
+E
+src/Aigo/Permute.java,0\f\0fdb835b371a98863f7c6d91e5b7ab7d819f19e8
+L
+src/Aigo/CombinationSum.java,5\d\5d30d58136a17761687298d92491089d77705853
+D
+src/Aigo/Divide.java,9\1\9104f493a2917ac2be3a4dbf6d3ddf97661aefad
 O
 src/Aigo/LongestPalindrome.java,e\7\e78fab0909dd1b146238ab14c4dabd88320aa889
 K
 src/Aigo/LongSubString.java,f\e\fe1994a68255d34df416ebfa680a67fc228e8346
-D
-src/Aigo/Divide.java,9\1\9104f493a2917ac2be3a4dbf6d3ddf97661aefad
-H
-src/Aigo/IntToRoman.java,2\7\27fb14135dc87788de2d5bb610d4c09d37ad7602
-C
-src/Aigo/Tower.java,b\7\b7ebe8563207517f7bb3267f5bdcb076551c4b04

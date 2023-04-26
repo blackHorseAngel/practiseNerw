@@ -39,37 +39,6 @@ public class LongestPalindrome {
         }
         return palindrome;
     }
-    //中心延展遍历
-    public static String longestPalindrome2(String s) {
-        int start = 0;
-        int length = s.length();
-        int end = s.length() -1;
-        String palindrome = "";
-        //如果字符串的长度是1，直接返回
-        if(length == 1){
-            return s;
-        }
-
-        if (length % 2 == 0) {
-            //TODO 查找中间的两个字符串
-            int mid =  binaryFind(start,end);
-            while((mid >= 0) && (mid < length)){
-                if((s.charAt(mid-1)) == s.charAt(mid+1)){
-                    palindrome = s.substring(mid-1,mid+1+1);
-                }
-            }
-        }else{
-            //TODO 查找中间的一个字符串
-        }
-        //如果字符串的长度是
-        return palindrome;
-    }
-
-    private static int binaryFind(int start, int end) {
-        int mid = (end - start)/2 + start;
-
-        return mid;
-    }
 
     private static boolean judgePalindrome(String temp) {
         for(int i = 0 ; i < temp.length() ; i++){
@@ -80,14 +49,52 @@ public class LongestPalindrome {
         return true;
     }
 
+    /**
+     * 动态规划处理
+     * @param s
+     * @return
+     */
+    public static String longestPalindrome3(String s){
+        String longestPalindrome = "";
+        if(s.length() < 2){
+            return s;
+        }
+        String temp = "";
+        int length = 0;
+        for(int i = 0 ; i < s.length() ; i++){
+            for(int j = i + 1 ; j <= s.length() ; j++){
+                temp = s.substring(i,j);
+                boolean flag = judgePalindrome(temp);
+                if(flag){
+                    if(length < temp.length()){
+                        length = Math.max(length,temp.length());
+                        longestPalindrome = temp;
+                    }
+
+                }
+            }
+            if(length == s.length()){
+                break;
+            }
+        }
+        return longestPalindrome;
+    }
     public static void main(String[] args) {
         //bab或aba
-        String s = "babad";
+//        String s = "babad";
         //bb
 //        String s = "cbbd";
         //
 //        String s = "";
-        String str = longestPalindrome(s);
+        //a
+//        String s = "a";
+        //bb
+//        String s = "bb";
+        //
+        String s ="1111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111";
+        System.out.println(s.length());
+//       String str = longestPalindrome(s);
+        String str = longestPalindrome3(s);
         System.out.println(str);
     }
 }

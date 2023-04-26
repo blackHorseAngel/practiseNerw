@@ -48,11 +48,32 @@ public class LongSubString {
         return set.size() > length ? set.size() : length;
     }
 
+    /**
+     *
+     * @param s
+     * @return
+     */
     public static int lengthOfLongestSubstring2(String s) {
-        if(s.length() == 0){
-            return 0;
+        if(s.length() < 2){
+            return s.length();
         }
-        return 0;
+        char[]ch = s.toCharArray();
+        int  p = 0;
+        int q = ch.length - 1;
+        Set<Character>set = new HashSet<>();
+        //TODO 减少一重循环，但是结果不对
+        while(p <= q){
+          if(!set.contains(ch[p])){
+            set.add(ch[p]);
+          }
+          if(ch[p]==ch[q]){
+             q--;
+          }else{
+              p++;
+          }
+
+        }
+        return set.size();
     }
     public static void main(String[] args) {
         //3  abc
@@ -60,9 +81,13 @@ public class LongSubString {
         //1  b
 //        String s = "bbbb";
         //3 kew
-//        String s = "pwwkew";
-        String s = " ";
-        int length = lengthOfLongestSubstring(s);
+        String s = "pwwkew";
+        //1
+//        String s = " ";
+        //
+//        String s = "au";
+//        int length = lengthOfLongestSubstring(s);
+        int length = lengthOfLongestSubstring2(s);
         System.out.println(length);
     }
 }

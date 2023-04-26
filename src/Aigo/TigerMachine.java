@@ -48,7 +48,7 @@ public class TigerMachine {
     public static void main(String[] args) {
 //        int n = 3;
 //        int[]arr = new int[n];
-//       getBitOfNum(n-1,arr);
+//       getBitOfNum(n,arr);
 
         getBitOfNum2(3,000);
     }

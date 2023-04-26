@@ -12,30 +12,31 @@ package Aigo;/**
  *@Version 1.0
  */
 public class test {
-    /**
-     *@Description
-     *@Author zhangshenming
-     *@Param b
-     *@Date 2021/10/16 22:37
-     *@Return int
-     */
-    public static int move1(byte b){
-        return  b | (b<<8) | (b<<16) | (b<<24);
-    }
 
-    public static int move(byte b){
-        return 0;
+    static int num =4;
+    {
+        num+=3;
+        System.out.println("b");
     }
+    int a =5;
+    {
+        System.out.println("c");
+    }
+    test(){
+        System.out.println("d");
+    }
+    static {
+        System.out.println("a");
+    }
+private static final String MESSAGE = "cib";
     public static void main(String[] args) {
-        byte[]bytes = {3,(byte)200};
-        for (byte b : bytes){
-            int result = move1(b);
-            System.out.println(result);
-
-        }
-//        int result = move2(b);
-//        Integer i = -56;
-//        String s = Integer.toBinaryString(i);
-//        System.out.println(s);
+//        new test();
+//        System.out.println(1<<4);
+    String a = "c"+"i"+"b";
+    String b = "c";
+    String c = "i";
+    String d = "b";
+        System.out.println(a==MESSAGE);
+        System.out.println((b+c+d)==MESSAGE);
     }
 }

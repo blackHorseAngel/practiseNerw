@@ -1,9 +1,6 @@
 package Aigo;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * @Description https://leetcode.cn/problems/letter-combinations-of-a-phone-number
@@ -22,96 +19,45 @@ import java.util.Map;
  * @Version 1.0.0
  */
 public class LetterCombinations {
-    //
+    /**
+     *
+     * @param digits
+     * @return
+     */
     public static List<String> letterCombinations(String digits) {
         int length = digits.length();
         List<String>resultList = new ArrayList<>();
         if(length == 0){
             return resultList;
         }
-        Map<Character,String> letterMap = generateLetters();
-        String[]s = new String[length];
-        for(int i = 0 ; i < length ; i++){
-            s[i] = letterMap.get(digits.charAt(i));
-        }
-     int num = 0 ;
-        while(true){
-            for(int j = 0 ; j < s[num].length() ; j++){
-                resultList.add(String.valueOf(s[num].charAt(j)));
-                num++;
-                if(num < length){
-                    for(int k = 0 ; k < s[num].length()  ;k++){
-                        resultList.add(String.valueOf(s[num].charAt(k)));
-                        num++;
-                        if(num < length){
-                            for(int m = 0 ; m < s[num].length() ; m++){
-                                resultList.add(String.valueOf(s[num].charAt(m)));
-                                num++;
-                                if(num < length){
-                                    for(int n = 0 ; n < s[num].length() ; n++){
-                                        resultList.add(String.valueOf(s[num].charAt(n)));
-                                        num++;
-                                        if(num < length){
-
-                                        }
-                                    }
-                                }else{
-                                    break;
-                                }
-                            }
-                        }else{
-                            break;
-                        }
-                    }
-                }else{
-                    break;
-                }
-            }
-            break;
-        }
-        return resultList;
-    }
-
-    /**
-     *
-     * @param digits
-     * @return
-     */
-    public static List<String> letterCombinations2(String digits) {
-        int length = digits.length();
-        List<String>resultList = new ArrayList<>();
-        if(length == 0){
-            return resultList;
-        }
         //初始化数字->字母顺序表
-        Map<Character,String>letterMap = generateLetters();
-        //将digit中的每个数字转成对应的字符串
-        String[]s = new String[length];
-        for(int i = 0 ; i < length ; i++){
-            s[i] =  letterMap.get(digits.charAt(i));
-        }
+        Map<Character,char[]>letterMap = generateLetters();
+
         //依次得到的每个字符
         char[]ch = new char[length];
         //对上面得到的字符串数字排序组合
-        countIndex(ch,s,0,resultList);
+        countIndex(ch,letterMap,digits,0,resultList);
         return resultList;
     }
 
     /**
      * 依次循环每一位，获取对应的字母，整理成字符串，
      * @param ch
-     * @param s
+     * @param letterMap
      * @param num
      * @param resultList
      */
-    private static void countIndex(char[]ch,String[] s, int num,List<String> resultList) {
-        for(int i = 0 ; i < s[num].length() ; i++){
-            ch[num] = s[num].charAt(i);
+    private static void countIndex(char[]ch,Map<Character,char[]> letterMap,String digits, int num,List<String> resultList) {
+        // 根据当前数字， 找到对应的字符集合
+        char[] lcs = letterMap.get(digits.toCharArray()[num]);
+
+        for(char c : lcs){
+            ch[num] = c;
             if(num == ch.length - 1){
                 resultList.add(transferCharToString(ch));
                 continue;
             }
-            countIndex(ch,s,num+1,resultList);
+            countIndex(ch,letterMap,digits,num+1,resultList);
         }
     }
 
@@ -128,17 +74,20 @@ public class LetterCombinations {
         return builder.toString();
     }
 
-
-    private static Map<Character, String> generateLetters() {
-        Map<Character,String>letterMap = new HashMap<>();
-        letterMap.put('2',"abc");
-        letterMap.put('3',"def");
-        letterMap.put('4',"ghi");
-        letterMap.put('5',"jkl");
-        letterMap.put('6',"mno");
-        letterMap.put('7',"pqrs");
-        letterMap.put('8',"tuv");
-        letterMap.put('9',"wxyz");
+    /**
+     * 初始化字符map集合
+     * @return
+     */
+    private static Map<Character, char[]> generateLetters() {
+        Map<Character,char[]>letterMap = new HashMap<>();
+        letterMap.put('2',"abc".toCharArray());
+        letterMap.put('3',"def".toCharArray());
+        letterMap.put('4',"ghi".toCharArray());
+        letterMap.put('5',"jkl".toCharArray());
+        letterMap.put('6',"mno".toCharArray());
+        letterMap.put('7',"pqrs".toCharArray());
+        letterMap.put('8',"tuv".toCharArray());
+        letterMap.put('9',"wxyz".toCharArray());
         return letterMap;
     }
 
@@ -152,7 +101,7 @@ public class LetterCombinations {
         //["ada","bda","cda","aea","bea","cea","afa","bfa","cfa","adb","bdb","cdb","adb","bdb","cdb","aeb","beb","ceb","afb","bfb","cfb","adc",
         // "bdc","cdc","aec","bec","cec","afc","bfc","cfc"]
         String digits = "232";
-        List<String>list = letterCombinations2(digits);
+        List<String>list = letterCombinations(digits);
         for (int i = 0 ; i < list.size();i++){
             System.out.println(list.get(i));
         }

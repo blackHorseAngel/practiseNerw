@@ -25,7 +25,7 @@ package Aigo;
 public class Divide {
     //
     public static int divide(int dividend, int divisor) {
-        if(dividend == 0){
+        if(dividend == 0 || dividend < divisor){
             return 0;
         }
         //被除数的符号位
@@ -34,25 +34,26 @@ public class Divide {
         int signFordivisor = 0;
         if(dividend < 0){
             signForDivedend = -1;
-
         }
-
         if(divisor < 0){
             signFordivisor = -1;
-
         }
         int count= 1;
-//        int calculator =
+        int calculator = dividend - divisor;
+//        while(){
+//
+//        }
 
         return 0;
     }
 
     public static void main(String[] args) {
         //3
-        int num = divide(10,3);
+//        int num = divide(10,3);
         //-2
-        int intnum = divide(7,-3);
-        System.out.println(num);
+//        int intnum = divide(7,-3);
+//        System.out.println(num);
+
     }
 
 }
