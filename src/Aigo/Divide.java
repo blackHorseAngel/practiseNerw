@@ -25,7 +25,7 @@ package Aigo;
 public class Divide {
     //
     public static int divide(int dividend, int divisor) {
-        if(dividend == 0 || dividend < divisor){
+        if(dividend == 0){
             return 0;
         }
         //被除数的符号位

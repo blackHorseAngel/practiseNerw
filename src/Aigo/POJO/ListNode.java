@@ -17,7 +17,11 @@ public class ListNode {
      *@Author zhangshenming
      *@Date 2021/7/31 19:11
      */
-    public ListNode nextNode;
+    public ListNode next;
+
+    public ListNode() {
+    }
+
     /**
      *@Description 链表的有参构造函数
      *@Author zhangshenming
@@ -37,6 +41,6 @@ public class ListNode {
      */
     public ListNode(int val, ListNode next) {
         this.val = val;
-        this.nextNode = nextNode;
+        this.next = next;
     }
 }

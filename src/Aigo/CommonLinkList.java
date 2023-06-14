@@ -3,8 +3,18 @@ package Aigo;
 import Aigo.POJO.ListNode;
 
 /**
- *@Desprition 给定两个有序链表的头指针head1和head2,打印两个链表的公共部分
+ *@Desprition https://leetcode.cn/problems/merge-two-sorted-lists
+ * 给定两个有序链表的头指针head1和head2,打印两个链表的公共部分
  * 如果两个链表的长度和为N,时间复杂度为O(N),额外空间复杂度为O(1)
+ * 输入：l1 = [1,2,4], l2 = [1,3,4]
+ * 输出：[1,1,2,3,4,4]
+ * 输入：l1 = [], l2 = []
+ * 输出：[]
+ * 输入：l1 = [], l2 = [0]
+ * 输出：[0]
+ * 两个链表的节点数目范围是 [0, 50]
+ * -100 <= Node.val <= 100
+ * l1 和 l2 均按 非递减顺序 排列
  *@Author zhangshenming
  *@Date 2021/10/7 9:08
  *@Version 1.0
