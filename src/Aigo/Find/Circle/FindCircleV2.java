@@ -18,16 +18,16 @@ public class FindCircleV2 extends FindCircleSuper{
      *@Return Aigo.POJO.ListNode
      */
     public ListNode find(ListNode head){
-        ListNode fastNode = head.nextNode.nextNode;
-        ListNode slowNode = head.nextNode;
+        ListNode fastNode = head.next.next;
+        ListNode slowNode = head.next;
         while(fastNode != slowNode){
-            fastNode = fastNode.nextNode.nextNode;
-            slowNode = slowNode.nextNode;
+            fastNode = fastNode.next.next;
+            slowNode = slowNode.next;
         }
         fastNode = head;
         while(fastNode != slowNode){
-            fastNode = fastNode.nextNode;
-            slowNode = slowNode.nextNode;
+            fastNode = fastNode.next;
+            slowNode = slowNode.next;
         }
         return fastNode;
     }
@@ -40,14 +40,14 @@ public class FindCircleV2 extends FindCircleSuper{
         ListNode node5 = new ListNode(6);
         ListNode node6 = new ListNode(7);
         ListNode node7 = new ListNode(8);
-        head.nextNode = node1;
-        node1.nextNode = node2;
-        node2.nextNode = node3;
-        node3.nextNode = node4;
-        node4.nextNode = node5;
-        node5.nextNode = node6;
-        node6.nextNode = node7;
-        node7.nextNode = node4;
+        head.next = node1;
+        node1.next = node2;
+        node2.next = node3;
+        node3.next = node4;
+        node4.next = node5;
+        node5.next = node6;
+        node6.next = node7;
+        node7.next = node4;
         FindCircleV2 findCircleV2 = new FindCircleV2();
         ListNode circleNode2 = findCircleV2.find(head);
         System.out.println("2链表中的换节点是：" + circleNode2);

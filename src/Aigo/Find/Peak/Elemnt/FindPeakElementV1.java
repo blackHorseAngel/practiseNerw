@@ -27,12 +27,17 @@ public class FindPeakElementV1 extends FindPeakElementSuper {
      * @return
      */
     public int findPeakElement(int[] nums) {
-        for(int i = 1 ; i < nums.length - 1 ; i++){
-            if((nums[i] > nums[i-1]) && (nums[i] > nums[i+1])){
-                return i;
+        int firstIndex = 0;
+        int secondIndex = 1;
+        while(secondIndex < nums.length){
+            //每次只要firstIndex对应的数组中的数字小于secondIndex对应的数组中的数字，数组在这段区间上是单调递增的，反之，是单调递减的。
+            if(nums[firstIndex] > nums[secondIndex]){
+                break;
             }
+            firstIndex++;
+            secondIndex++;
         }
-        return -1;
+        return firstIndex;
     }
 
 

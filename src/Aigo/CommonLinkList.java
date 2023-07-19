@@ -31,15 +31,15 @@ public class CommonLinkList {
         ListNode node1 = head1;
         ListNode node2 = head2;
         System.out.println("两个链表中的公共部分是：");
-        while((node1.nextNode != null) && (node2.nextNode != null)){
+        while((node1.next != null) && (node2.next != null)){
             if(node1.val == node2.val){
                 System.out.print(node1.val+"  ");
-                node1 = node1.nextNode;
-                node2 = node2.nextNode;
+                node1 = node1.next;
+                node2 = node2.next;
             }else if(node1.val > node2.val){
-                node2 = node2.nextNode;
+                node2 = node2.next;
             }else if(node1.val < node2.val){
-                node1 = node1.nextNode;
+                node1 = node1.next;
             }
         }
     }
@@ -53,12 +53,12 @@ public class CommonLinkList {
         ListNode node14 = new ListNode(9);
         ListNode node15 = new ListNode(10);
         ListNode node16 = new ListNode(11);
-        head1.nextNode = node11;
-        node11.nextNode = node12;
-        node12.nextNode = node13;
-        node13.nextNode = node14;
-        node14.nextNode = node15;
-        node15.nextNode = node16;
+        head1.next = node11;
+        node11.next = node12;
+        node12.next = node13;
+        node13.next = node14;
+        node14.next = node15;
+        node15.next = node16;
         ListNode head2 = new ListNode(1);
         ListNode node21 = new ListNode(2);
         ListNode node22 = new ListNode(4);
@@ -67,13 +67,13 @@ public class CommonLinkList {
         ListNode node25 = new ListNode(10);
         ListNode node26 = new ListNode(12);
         ListNode node27 = new ListNode(14);
-        head2.nextNode = node21;
-        node21.nextNode = node22;
-        node22.nextNode = node23;
-        node23.nextNode = node24;
-        node24.nextNode = node25;
-        node25.nextNode = node26;
-        node26.nextNode = node27;
+        head2.next = node21;
+        node21.next = node22;
+        node22.next = node23;
+        node23.next = node24;
+        node24.next = node25;
+        node25.next = node26;
+        node26.next = node27;
         findCommon(head1,head2);
 
     }

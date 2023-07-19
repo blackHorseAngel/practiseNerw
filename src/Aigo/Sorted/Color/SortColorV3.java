@@ -63,10 +63,18 @@ public class SortColorV3 extends SortColorsSuper{
                     }
                     break;
                 case ZERO_AND_ONE:
+                    if(num == 0){
+                        state = ONE_AND_ZERO;
+                    }else if(num == 1){
+                        index++;
+                    } else if (num == 2) {
+                        positionForNotTwo = handleTwo(positionForNotTwo,index,nums);
+                    }
+                    break;
                 case ONE_AND_ZERO:
                     handleZero(positionForNotZero,index,nums);
                     positionForNotZero++;
-                    state = ALL_ONE;
+                    state = ZERO_AND_ONE;
                     break;
                 default:
                     break;
@@ -102,6 +110,9 @@ public class SortColorV3 extends SortColorsSuper{
     private int handleTwo(int positionForNotTwo, int index,int[]nums) {
         while(nums[positionForNotTwo] == 2){
             positionForNotTwo--;
+            if(positionForNotTwo < 0){
+                break;
+            }
         }
         if(positionForNotTwo > index){
             swap(nums,index,positionForNotTwo);
@@ -117,12 +128,12 @@ public class SortColorV3 extends SortColorsSuper{
     }
 
     public static void main(String[] args) {
-//        SortColorV3 sortColors = new SortColorV3();
 //        int[]nums = new int[]{1,2,2,2,2,0,0,0,1,1};
 //        int[]nums = new int[]{2,0,1};
 //        int[]nums = new int[]{1,1,1,1,1};
 //        int[]nums = new int[]{2,2,2,2,2};
 //        int[]nums = {0,2,2,2,0,2,1,1};
+//        SortColorV3 sortColors = new SortColorV3();
 //        sortColors.sortColors(nums);
 //        for (int i:nums) {
 //            System.out.println(i);

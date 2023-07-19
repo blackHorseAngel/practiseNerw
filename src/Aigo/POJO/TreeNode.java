@@ -1,5 +1,7 @@
 package Aigo.POJO;
 
+import java.util.Queue;
+
 /**
  *@Desprition
  *@Author zhangshenming
@@ -13,34 +15,12 @@ public class TreeNode {
      */
     int value;
     //左节点
-    TreeNode left;
+    public TreeNode left;
     //右节点
-    TreeNode right;
+    public TreeNode right;
 
     public TreeNode() {
     }
-
-    public TreeNode getLeft() {
-        return left;
-    }
-
-    public void setLeft(TreeNode left) {
-        this.left = left;
-    }
-
-    public TreeNode getRight() {
-        return right;
-    }
-
-    public void setRight(TreeNode right) {
-        this.right = right;
-    }
-
-    /**
-     * 每个节点的下面的子节点数
-     */
-//    List<TreeNode> nextTreeNodes = new ArrayList<TreeNode>();
-
     /**
      * @Description 初始化方法
      * @Author zhangshenming
@@ -58,6 +38,39 @@ public class TreeNode {
 
     public void setValue(int value) {
         this.value = value;
+    }
+
+    public void setLeft(TreeNode left) {
+        this.left = left;
+    }
+
+    public void setRight(TreeNode right) {
+        this.right = right;
+    }
+
+    public TreeNode(int value, TreeNode left, TreeNode right) {
+        this.value = value;
+        this.left = left;
+        this.right = right;
+    }
+
+    /**
+     * 打印树
+     * @param treeNode
+     * @param queue
+     */
+    public static void layerPriorityTraverseTree(TreeNode treeNode, Queue<TreeNode> queue){
+        queue.offer(treeNode);
+        while(!queue.isEmpty()){
+            TreeNode curNode = queue.poll();
+            System.out.print(curNode.getValue()+"  ");
+            if(curNode.left != null){
+                queue.offer(curNode.left);
+            }
+            if(curNode.right != null){
+                queue.offer(curNode.right);
+            }
+        }
     }
 
     public static void main(String[] args) {

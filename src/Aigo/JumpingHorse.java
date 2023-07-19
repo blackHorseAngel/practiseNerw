@@ -167,7 +167,7 @@ public class JumpingHorse {
             Point point = pointList.get(i);
             matrix[point.getX()][point.getY()] = i;
         }
-        Print.printDoubleArrayMew(matrix);
+        Print.printDoubleArrayNew(matrix);
     }
 
 }

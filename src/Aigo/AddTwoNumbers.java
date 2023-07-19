@@ -47,8 +47,8 @@ public class AddTwoNumbers {
         ListNode firstNode = head;
         for (int i = 1 ; i <str.length() ; i++){
             ListNode curNode = new ListNode(Integer.parseInt(String.valueOf(str.charAt(i))));
-            firstNode.nextNode = curNode;
-            firstNode = firstNode.nextNode;
+            firstNode.next = curNode;
+            firstNode = firstNode.next;
         }
         return head;
     }
@@ -90,7 +90,7 @@ public class AddTwoNumbers {
         String str = "";
         while(node != null){
             builder.append(node.val);
-            node = node.nextNode;
+            node = node.next;
         }
         str = builder.toString();
         return str;
@@ -99,48 +99,48 @@ public class AddTwoNumbers {
         //807 head = 8
 //        ListNode head1 = new ListNode(2);
 //        ListNode listNode11 = new ListNode(4);
-//        head1.nextNode = listNode11;
+//        head1.next = listNode11;
 //        ListNode listNode12 = new ListNode(3);
-//        listNode11.nextNode = listNode12;
-//        listNode12.nextNode = null;
+//        listNode11.next = listNode12;
+//        listNode12.next = null;
 //        ListNode head2 = new ListNode(5);
 //        ListNode listNode21 = new ListNode(6);
-//        head2.nextNode = listNode21;
+//        head2.next = listNode21;
 //        ListNode listNode22 = new ListNode(4);
-//        listNode21.nextNode = listNode22;
-//        listNode22.nextNode = null;
+//        listNode21.next = listNode22;
+//        listNode22.next = null;
         //0 head=0
 //        ListNode head1 = new ListNode(0);
-//        head1.nextNode = null;
+//        head1.next = null;
 //        ListNode head2 = new ListNode(0);
-//        head2.nextNode = null;
+//        head2.next = null;
         //80009991 head = 8
         ListNode head1 = new ListNode(9);
         ListNode listNode11 = new ListNode(9);
-        head1.nextNode = listNode11;
+        head1.next = listNode11;
         ListNode listNode12 = new ListNode(9);
-        listNode11.nextNode = listNode12;
+        listNode11.next = listNode12;
         ListNode listNode13 = new ListNode(9);
-        listNode12.nextNode = listNode13;
+        listNode12.next = listNode13;
         ListNode listNode14 = new ListNode(9);
-        listNode13.nextNode = listNode14;
+        listNode13.next = listNode14;
         ListNode listNode15 = new ListNode(9);
-        listNode14.nextNode = listNode15;
+        listNode14.next = listNode15;
         ListNode listNode16 = new ListNode(9);
-        listNode15.nextNode = listNode16;
-        listNode16.nextNode = null;
+        listNode15.next = listNode16;
+        listNode16.next = null;
         ListNode head2 = new ListNode(9);
         ListNode listNode21 = new ListNode(9);
-        head2.nextNode = listNode21;
+        head2.next = listNode21;
         ListNode listNode22 = new ListNode(9);
-        listNode21.nextNode = listNode22;
+        listNode21.next = listNode22;
         ListNode listNode23 = new ListNode(9);
-        listNode22.nextNode = listNode23;
-        listNode23.nextNode = null;
+        listNode22.next = listNode23;
+        listNode23.next = null;
         ListNode node = addTwoNumbers(head1,head2);
         while(node != null){
             System.out.println(node.val);
-            node = node.nextNode;
+            node = node.next;
         }
     }
 

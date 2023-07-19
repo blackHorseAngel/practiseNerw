@@ -1,6 +1,5 @@
 package Aigo.Fibonacci.Array;
 
-import java.util.HashSet;
 import java.util.Set;
 
 /**
@@ -86,8 +85,7 @@ public class Fibonacci2 {
     }
     public static void main(String[] args) {
         //1,1,2,3,5,8,13,21,34,55,89,144,233,377,610
-        Set<Integer>set = new HashSet<>();
         int n = 55;
-        int num = fib(n);
+        System.out.println(fib(n));
     }
 }

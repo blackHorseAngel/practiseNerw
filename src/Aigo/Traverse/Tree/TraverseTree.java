@@ -20,11 +20,11 @@ public class TraverseTree {
         if(treeNode != null){
             System.out.print(treeNode.getValue() + "  ");
         }
-        if(treeNode.getLeft() != null){
-            forwardTraverseTree(treeNode.getLeft());
+        if(treeNode.left != null){
+            forwardTraverseTree(treeNode.left);
         }
-        if(treeNode.getRight() != null){
-            forwardTraverseTree(treeNode.getRight());
+        if(treeNode.right != null){
+            forwardTraverseTree(treeNode.right);
         }
     }
 
@@ -33,11 +33,11 @@ public class TraverseTree {
      * @param treeNode
      */
     public void backwardTraverseTree(TreeNode treeNode){
-        if(treeNode.getLeft() != null){
-            backwardTraverseTree(treeNode.getLeft());
+        if(treeNode.left != null){
+            backwardTraverseTree(treeNode.left);
         }
-        if(treeNode.getRight() != null){
-            backwardTraverseTree(treeNode.getRight());
+        if(treeNode.right != null){
+            backwardTraverseTree(treeNode.right);
         }
         if(treeNode != null){
             System.out.print(treeNode.getValue() + "  ");
@@ -49,14 +49,14 @@ public class TraverseTree {
      * @param treeNode
      */
     public void middleTraverseTree(TreeNode treeNode){
-        if(treeNode.getLeft() != null){
-            middleTraverseTree(treeNode.getLeft());
+        if(treeNode.left != null){
+            middleTraverseTree(treeNode.left);
         }
         if(treeNode != null){
             System.out.print(treeNode.getValue() + "  ");
         }
-        if(treeNode.getRight() != null){
-            middleTraverseTree(treeNode.getRight());
+        if(treeNode.right != null){
+            middleTraverseTree(treeNode.right);
         }
     }
 
@@ -69,11 +69,11 @@ public class TraverseTree {
             while(!queue.isEmpty()){
                 TreeNode curNode = queue.poll();
                 System.out.print(curNode.getValue()+"  ");
-                if(curNode.getLeft() != null){
-                    queue.offer(curNode.getLeft());
+                if(curNode.left != null){
+                    queue.offer(curNode.left);
                 }
-                if(curNode.getRight() != null){
-                    queue.offer(curNode.getRight());
+                if(curNode.right != null){
+                    queue.offer(curNode.right);
                 }
             }
     }

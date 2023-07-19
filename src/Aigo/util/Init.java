@@ -20,7 +20,7 @@ public class Init {
      */
     public static int[]initArray(int length){
         int[]array = new int[length];
-        for (int i=0;i<length;i++){
+        for (int i = 0 ; i < length ; i++){
             array[i] = new Random().nextInt(50);
         }
         return array;
@@ -63,10 +63,10 @@ public class Init {
      */
     public static void initNodeForTail(int n){
         ListNode head = new ListNode(1);
-        for(int i = 2;i < n ; i++){
+        for(int i = 2 ; i < n ; i++){
             ListNode node = new ListNode(i);
-            head.nextNode = node;
-            head = head.nextNode;
+            head.next = node;
+            head = head.next;
         }
     }
     /**
@@ -78,9 +78,9 @@ public class Init {
      */
     public static void initNodeForHead(int n){
         ListNode head = new ListNode(n);
-        for(int i = n-1;i > 0;i--){
+        for(int i = n-1 ; i > 0 ; i--){
             ListNode node = new ListNode(i);
-            node.nextNode = head;
+            node.next = head;
             head = node;
         }
     }

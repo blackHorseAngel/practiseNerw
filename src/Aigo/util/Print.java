@@ -52,7 +52,7 @@ public class Print {
      * @param array
      * @return void
      */
-    public static void printDoubleArrayMew(int[][]array){
+    public static void printDoubleArrayNew(int[][]array){
         for(int x = 0 ; x < array.length ; x++){
             for(int y = 0 ; y < array.length ; y++){
                 System.out.print(array[x][y] + "     ");
@@ -72,7 +72,7 @@ public class Print {
         ListNode nowNode = head;
         while(nowNode != null){
             System.out.println(nowNode.val);
-            nowNode = nowNode.nextNode;
+            nowNode = nowNode.next;
         }
     }
 }
