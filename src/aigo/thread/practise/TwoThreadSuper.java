@@ -16,7 +16,7 @@ public class TwoThreadSuper {
     }
 
     public static void main(String[] args) {
-        TwoThreadSuper[] twoThreads = {new TwoThreadV8_3(), new TwoThreadV8_6_SingleThreadWaitAndNotify(), new TwoThreadV10_SingleThreadLockAndOneCondition(), new TwoThreadV10_2_SIngleThreadLockAndMultiCondition(), new TwoThreadV11_SingleThreadBlockingQueue(), new TwoThreadV12_SingleThreadSemaphore(), new TwoThreadV13_SingleThreadSynchronousQueue(), new TwoThreadV14()};
+        TwoThreadSuper[] twoThreads = {new TwoThreadV8_3_SingleThreadWaitAndNotify(), new TwoThreadV8_6_SingleThreadWaitAndNotifyAndVolatile(), new TwoThreadV10_SingleThreadLockAndOneCondition(), new TwoThreadV10_2_SIngleThreadLockAndMultiCondition(), new TwoThreadV11_SingleThreadBlockingQueue(), new TwoThreadV12_SingleThreadSemaphore(), new TwoThreadV13_SingleThreadSynchronousQueue(), new TwoThreadV14_exchanger_error()};
         for (TwoThreadSuper twoThread : twoThreads) {
             try {
                 Thread t1 = new Thread(() -> {

@@ -1,13 +1,13 @@
 package aigo.thread.practise;
 
 /**
- * @Description 创建两个线程，分别大打印a和b，一共打印100次结束,且先打印“a”再打印“b”.ababab
+ * @Description 创建两个线程，分别打印a和b，一共打印100次结束,且先打印“a”再打印“b”.ababab
  * 方案1的优化版：解决t1和t2线程的启动问题
  * @Author Administrator
  * @Date 2023/8/6 19:18
  * @Version 1.0.0
  */
-public class TwoThreadV8_5 {
+public class TwoThreadV8_5_SingleThreadWaitAndNotifyAndSleep {
     void printOutA() {
         try {
             for (int i = 0; i < 50; i++) {
@@ -32,8 +32,7 @@ public class TwoThreadV8_5 {
         }
     }
     public static void main(String[] args) {
-        TwoThreadV8_5 twoThread = new TwoThreadV8_5();
-        long startTime = System.currentTimeMillis();
+        TwoThreadV8_5_SingleThreadWaitAndNotifyAndSleep twoThread = new TwoThreadV8_5_SingleThreadWaitAndNotifyAndSleep();
         Thread t1 = new Thread(() -> {
             try {
                 Thread.sleep(1);
@@ -52,7 +51,5 @@ public class TwoThreadV8_5 {
         });
         t1.start();
         t2.start();
-        long endTime = System.currentTimeMillis();
-        System.out.println("总耗时：" + (endTime - startTime));
     }
 }

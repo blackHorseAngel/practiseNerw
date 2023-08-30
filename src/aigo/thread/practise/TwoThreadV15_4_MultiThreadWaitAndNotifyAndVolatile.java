@@ -7,7 +7,7 @@ package aigo.thread.practise;
  * @Date 2023/8/13 18:05
  * @Version 1.0.0
  */
-public class TwoThreadV15_4 extends TwoThreadSuper {
+public class TwoThreadV15_4_MultiThreadWaitAndNotifyAndVolatile extends TwoThreadSuper {
     /**
      * printed:==1:打印A；==2：打印B
      */
@@ -67,7 +67,7 @@ public class TwoThreadV15_4 extends TwoThreadSuper {
     }
 
     public static void main(String[] args) {
-        TwoThreadV15_4 twoThread = new TwoThreadV15_4();
+        TwoThreadV15_4_MultiThreadWaitAndNotifyAndVolatile twoThread = new TwoThreadV15_4_MultiThreadWaitAndNotifyAndVolatile();
         int m = 10;
         int n = 20;
         for (int i = 0; i < m; i++) {

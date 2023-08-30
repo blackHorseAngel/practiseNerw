@@ -10,7 +10,7 @@ import java.util.concurrent.atomic.AtomicInteger;
  * @Date 2023/8/18 15:27
  * @Version 1.0.0
  */
-public class TwoThreadV15_7 extends TwoThreadSuper {
+public class TwoThreadV15_7_MultiThreadSemaphore extends TwoThreadSuper {
     /**
      * 对于线程A的信号量
      */
@@ -75,7 +75,7 @@ public class TwoThreadV15_7 extends TwoThreadSuper {
     }
 
     public static void main(String[] args) {
-        TwoThreadV15_7 twoThread = new TwoThreadV15_7();
+        TwoThreadV15_7_MultiThreadSemaphore twoThread = new TwoThreadV15_7_MultiThreadSemaphore();
         int m = 10;
         int n = 20;
         for (int i = 0; i < m; i++) {

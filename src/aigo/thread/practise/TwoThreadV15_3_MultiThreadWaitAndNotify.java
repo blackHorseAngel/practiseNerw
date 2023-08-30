@@ -7,7 +7,7 @@ package aigo.thread.practise;
  * @Date 2023/8/10 10:10
  * @Version 1.0.0
  */
-public class TwoThreadV15_3 extends TwoThreadSuper {
+public class TwoThreadV15_3_MultiThreadWaitAndNotify extends TwoThreadSuper {
     /**
      * 当ARunning是true的时候等待，是false的时候打印A
      */
@@ -74,7 +74,7 @@ public class TwoThreadV15_3 extends TwoThreadSuper {
     }
 
     public static void main(String[] args) {
-        TwoThreadV15_3 twoThread = new TwoThreadV15_3();
+        TwoThreadV15_3_MultiThreadWaitAndNotify twoThread = new TwoThreadV15_3_MultiThreadWaitAndNotify();
         int m = 10;
         int n = 20;
         int printTime = 5;

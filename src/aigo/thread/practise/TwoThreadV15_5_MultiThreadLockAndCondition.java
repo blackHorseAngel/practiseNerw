@@ -11,7 +11,7 @@ import java.util.concurrent.locks.ReentrantLock;
  * @Date 2023/8/13 18:53
  * @Version 1.0.0
  */
-public class TwoThreadV15_5 extends TwoThreadSuper {
+public class TwoThreadV15_5_MultiThreadLockAndCondition extends TwoThreadSuper {
     /**
      * printed:==1:打印A，==2：打印B
      */
@@ -89,7 +89,7 @@ public class TwoThreadV15_5 extends TwoThreadSuper {
     }
 
     public static void main(String[] args) {
-        TwoThreadV15_5 twoThread = new TwoThreadV15_5();
+        TwoThreadV15_5_MultiThreadLockAndCondition twoThread = new TwoThreadV15_5_MultiThreadLockAndCondition();
         int m = 10;
         int n = 20;
         for (int i = 0; i < m; i++) {

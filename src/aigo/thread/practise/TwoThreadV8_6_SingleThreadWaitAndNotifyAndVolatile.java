@@ -2,24 +2,23 @@ package aigo.thread.practise;
 
 /**
  * @Description 创建两个线程，分别大打印a和b，一共打印100次结束,且先打印“a”再打印“b”.ababab
- * 方案1：采用wait/notify + volatile辅助，但是有缺陷，必须t2先启动，原因在于sychronized
+ * 方案1的再次优化：彻底解决t1和t2的启动顺序问题,使用volatile变量来进行“翻牌子”
  * @Author Administrator
- * @Date 2023/8/6 10:59
+ * @Date 2023/8/6 19:29
  * @Version 1.0.0
  */
-public class TwoThreadV8_3 extends TwoThreadSuper {
-
-    private volatile boolean flag = false;
+public class TwoThreadV8_6_SingleThreadWaitAndNotifyAndVolatile extends TwoThreadSuper {
+    private volatile boolean bRunning = false;
     @Override
     synchronized void printOutA() {
         try {
+            while (!bRunning){
+                wait();
+            }
             for (int i = 0; i < 50; i++) {
-                if (flag) {
-                    wait();
-                }
                 System.out.println("a");
-                flag = true;
                 notify();
+                wait();
             }
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
@@ -28,12 +27,11 @@ public class TwoThreadV8_3 extends TwoThreadSuper {
     @Override
     synchronized void printOutB() {
         try {
+            bRunning = true;
+            notify();
             for (int i = 0; i < 50; i++) {
-                if (!flag) {
-                    wait();
-                }
+                wait();
                 System.out.println("b");
-                flag = false;
                 notify();
             }
         } catch (InterruptedException e) {

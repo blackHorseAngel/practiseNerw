@@ -9,7 +9,7 @@ import java.util.concurrent.Exchanger;
  * @Date 2023/8/8 0:01
  * @Version 1.0.0
  */
-public class TwoThreadV14 extends TwoThreadSuper {
+public class TwoThreadV14_exchanger_error extends TwoThreadSuper {
     private static Exchanger exchanger = new Exchanger();
     void printOutA() {
         try {
@@ -35,7 +35,7 @@ public class TwoThreadV14 extends TwoThreadSuper {
     }
 
     public static void main(String[] args) {
-        TwoThreadV14 twoThread = new TwoThreadV14();
+        TwoThreadV14_exchanger_error twoThread = new TwoThreadV14_exchanger_error();
         Thread t1 = new Thread(() -> {
             for (int i = 0; i < 50; i++) {
                 twoThread.printOutA();
