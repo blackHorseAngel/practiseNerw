@@ -83,8 +83,6 @@ public class TwoThreadV16_2_MultiThreadWaitAndNotify extends TwoThreadSuper {
                             return;
                         }
                     }
-
-
                     System.out.println(Thread.currentThread().getName() + "打印的B");
                     b = atomicIntegerB.incrementAndGet();
                     if (b % section == 0) {
